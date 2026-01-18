@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import SavedNews from "./pages/SavedNews";
-import Header from "./components/Header";
+import Home from "../../pages/Home";
+import SavedNews from "../../pages/SavedNews";
+import Header from "../../components/Header/Header";
 
 function App() {
   return (

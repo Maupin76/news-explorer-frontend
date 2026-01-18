@@ -1,5 +1,11 @@
+import SearchForm from "../components/SearchForm/SearchForm";
+
 function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <main>
+      <SearchForm />
+    </main>
+  );
 }
 
 export default Home;

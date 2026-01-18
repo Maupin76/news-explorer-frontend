@@ -1,0 +1,7 @@
+@import url(./vendor/normalize.css);
+
+@font-face {
+  font-family: "Roboto-slab";
+  src: url(../src/assets/fonts/roboto-slab-400-regular.woff) format("truetype");
+  src: url(../src/assets/fonts/roboto-slab-400-regular.woff2) format("truetype");
+}
