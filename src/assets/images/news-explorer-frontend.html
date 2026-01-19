@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5173/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="./news-explorer-frontend_files/client"></script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news-explorer-frontend</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/SearchForm/SearchForm.css">.search {
+  width: 100%;
+  height: 576px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/src/assets/images/hero-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.search__container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.search__title {
+  font-size: 40px;
+  margin-top: 160px;
+  font-family: "Roboto-slab", sans-serif;
+}
+
+.search__subtitle {
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.search__form {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d2d6;
+  border-radius: 100px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.search__input {
+  flex: 1;
+  border: none;
+  padding: 14px 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search__button {
+  width: 168px;
+  height: 100%; /* 🔑 THIS IS THE FIX */
+  border: none;
+  background: #2f71e5;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 100px; /* keeps pill shape */
+}
+
+@media screen and (max-width: 768px) {
+  .search__container {
+    max-width: 100%;
+    padding: 0 16px;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .search {
+    height: 536px;
+    max-width: 100%;
+  }
+  .search__container {
+    /* max-width: 100%; */
+    padding: 0 16px;
+    text-align: left;
+  }
+
+  .search__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 96px;
+  }
+
+  .search__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
+  .search__form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+    border-radius: 16px;
+    background: transparent;
+    border: none;
+    margin-top: 122px;
+  }
+
+  .search__input {
+    width: 100%;
+    height: 56px;
+    border: 1px solid #d1d2d6;
+    border-radius: 100px;
+    /* padding: 14px 16px; */
+    font-size: 16px;
+  }
+
+  .search__button {
+    width: 100%;
+    height: 56px;
+    border-radius: 100px;
+  }
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/Header/Header.css">.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header__logo {
+  color: #fff;
+  font-family: "Roboto-slab", serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.header__container {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 104px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.header__link {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 56px;
+  text-decoration: none;
+  position: relative;
+}
+
+.header__button {
+  width: 176px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+/* Mobile toggle button hidden by default */
+.header__menu-button {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.overlay {
+  display: none;
+}
+
+/* ===== Tablet ===== */
+@media screen and (max-width: 768px) {
+  .header__container {
+    padding: 0 40px;
+  }
+}
+
+/* ===== Mobile ===== */
+@media screen and (max-width: 425px) {
+  /* Hide desktop nav (mobile uses hamburger) */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+  }
+
+  .header__nav_desktop {
+    display: none;
+  }
+
+  /* Show hamburger / X */
+  .header__menu-button {
+    display: block;
+  }
+
+  /* Closed state: short header over hero */
+  .header {
+    height: 56px;
+    border-bottom: none;
+  }
+
+  .header__container {
+    padding: 16px;
+  }
+
+  /* Open state: header becomes the dark panel */
+  .header.header_open {
+    background: #1a1b22;
+    height: auto;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .header.header_open .header__container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header__nav_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+
+    padding: 24px 16px;
+  }
+
+  .header__button {
+    width: 100%;
+    height: 56px;
+  }
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/Footer/Footer.css">.footer {
+  margin: 0;
+  padding: 0;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 104px 26px 104px;
+  width: auto;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  text-decoration: none;
+  color: #1a1b22;
+  font-family: Roboto, sans-serif;
+}
+
+.footer__links-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__links-social {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__link-linkedin {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__link-github {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    margin: 24px 40px 18px 40px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer__container {
+    flex-direction: column-reverse;
+    gap: 38px;
+    margin: 20px 16px 22px 16px;
+    width: auto;
+  }
+
+  .footer__links {
+    /* justify-content: space-between; */
+    width: 200px;
+    font-size: 18px;
+  }
+
+  .footer__links-nav {
+    flex-direction: column;
+  }
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/vendor/normalize.css">/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+</style></head>
+  <body data-new-gr-c-s-check-loaded="14.1268.0" data-gr-ext-installed="">
+    <div id="root"><header class="header "><div class="header__container"><a class="header__logo" href="http://localhost:5173/" data-discover="true">NewsExplorer</a><button class="header__menu-button" aria-label="Open menu"><img alt="Menu toggle" src="./news-explorer-frontend_files/menu.png"></button><nav class="header__nav header__nav_desktop"><a class="header__link" href="http://localhost:5173/" data-discover="true">Home</a><button class="header__button">Sign in</button></nav></div></header><main><section class="search"><div class="search__container"><h1 class="search__title">What's going on in the world?</h1><p class="search__subtitle">Find the latest news on any topic and save them in your personal account.</p><form class="search__form"><input class="search__input" placeholder="Enter topic" aria-label="Search topic" type="text"><button type="submit" class="search__button">Search</button></form></div></section></main><div class="footer"><div class="footer__container"><p class="footer__copyright">© 2024 Supersite, Powered by News API</p><div class="footer__links"><div class="footer__links-nav"><a class="footer__links" href="http://localhost:5173/" data-discover="true">Home</a><a href="https://tripleten.com/" class="footer__links" target="_blank" rel="noreferrer">TripleTen</a></div><div class="footer__links-social"><a href="https://www.linkedin.com/" class="footer__link footer__link-linkedin" target="_blank" rel="noreferrer"><img alt="LinkedIn" src="./news-explorer-frontend_files/LinkedIn.png"></a><a href="https://github.com/Maupin76" class="footer__link footer__link-github" target="_blank" rel="noreferrer"><img alt="GitHub" src="./news-explorer-frontend_files/github.png"></a></div></div></div></div></div>
+    <script type="module" src="./news-explorer-frontend_files/main.jsx"></script>
+  
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

@@ -1,0 +1,81 @@
+.footer {
+  margin: 0;
+  padding: 0;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 104px 26px 104px;
+  width: auto;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  text-decoration: none;
+  color: #1a1b22;
+  font-family: Roboto, sans-serif;
+}
+
+.footer__links-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__links-social {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__link-linkedin {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__link-github {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    margin: 24px 40px 18px 40px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 641px) {
+  .footer__container {
+    flex-direction: column-reverse;
+    gap: 38px;
+    margin: 20px 16px 22px 16px;
+    width: auto;
+    align-items: start;
+  }
+
+  .footer__links {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+
+  .footer__links-nav {
+    flex-direction: column;
+  }
+
+  .footer__links-social {
+    gap: 16px;
+    margin-left: auto;
+  }
+}

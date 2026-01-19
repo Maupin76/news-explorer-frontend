@@ -13,7 +13,7 @@
   color: #fff;
   font-family: "Roboto-slab", serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   text-decoration: none;
 }
@@ -35,7 +35,7 @@
 
 .header__link {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 56px;
   text-decoration: none;
@@ -51,7 +51,7 @@
   background: transparent;
   color: #fff;
   font-family: Roboto, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   cursor: pointer;
