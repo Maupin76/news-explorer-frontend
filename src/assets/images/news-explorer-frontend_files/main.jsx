@@ -1,7 +1,7 @@
 import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=8840d187"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
 import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=8840d187"; const React = __vite__cjsImport1_react.__esModule ? __vite__cjsImport1_react.default : __vite__cjsImport1_react;
 import __vite__cjsImport2_reactDom_client from "/node_modules/.vite/deps/react-dom_client.js?v=8840d187"; const ReactDOM = __vite__cjsImport2_reactDom_client.__esModule ? __vite__cjsImport2_reactDom_client.default : __vite__cjsImport2_reactDom_client;
-import App from "/src/components/App/App.jsx?t=1768796170417";
+import App from "/src/components/App/App.jsx?t=1768954801892";
 import "/src/vendor/normalize.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   /* @__PURE__ */ jsxDEV(React.StrictMode, { children: /* @__PURE__ */ jsxDEV(App, {}, void 0, false, {

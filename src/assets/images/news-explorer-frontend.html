@@ -9,7 +9,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
     <script type="module" src="./news-explorer-frontend_files/client"></script>
 
     
-    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
+    <link rel="icon" type="image/png" size="32x32" href="http://localhost:5173/group.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>news-explorer-frontend</title>
   <style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/SearchForm/SearchForm.css">.search {
@@ -130,6 +130,171 @@ window.$RefreshSig$ = () => (type) => type;</script>
     border-radius: 100px;
   }
 }
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/Main/Main.css">.main {
+  width: 100%;
+  /* background-color: #f5f6f7; */
+  margin: 0;
+  padding: 0;
+}
+
+.main__results {
+  max-width: 1232px;
+  margin: 0 auto;
+  /* padding: 80px 104px; */
+}
+
+.main__results-title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  margin-bottom: 64px;
+  margin-top: 80px;
+  margin-left: 104px;
+}
+
+.main__cards-placeholder {
+  min-height: 200px; /* temporary visual space */
+}
+
+.main__show-more {
+  display: block;
+  margin: 56px auto 80px;
+  width: 288px;
+  height: 64px;
+  border-radius: 80px;
+  border: none;
+  background-color: #e8e8e8;
+  color: #1a1b22;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/About/About.css">.about {
+  /* max-width: 100%; */
+  background-color: #fff;
+  margin: 104px;
+}
+
+.about__container {
+  margin: 0;
+  display: flex;
+  gap: 56px;
+}
+
+.about__avatar {
+  width: 464px;
+  height: 464px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about__content {
+  margin-right: 112px;
+}
+
+.about__title {
+  font-size: 40px;
+  line-height: 46px;
+  margin-bottom: 24px;
+}
+
+.about__text {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+/* ===== Tablet ===== */
+@media screen and (max-width: 768px) {
+  .about__avatar {
+    width: 232px;
+    height: 232px;
+  }
+}
+
+/* ===== Mobile ===== */
+@media screen and (max-width: 425px) {
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/NewsCardList/NewsCardList.css">.news-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 104px;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/NewsCard/NewsCard.css">.news-card {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-card__save-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fff;
+  background-image: url("/src/assets/images/saved-normal.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.news-card__save-button:hover {
+  background-image: url("/src/assets/images/saved-hover.png");
+}
+
+.news-card__image {
+  width: 100%;
+  height: 272px;
+  object-fit: cover;
+}
+
+.news-card__content {
+  padding: 20px;
+}
+
+.news-card__date {
+  font-family: "source sans pro", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin-bottom: 12px;
+}
+
+.news-card__title {
+  font-family: "Roboto slab", serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.news-card__text {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 18px;
+}
+
+.news-card__source {
+  font-family: "Roboto Slab", serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #b6bcbf;
+}
 </style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/components/Header/Header.css">.header {
   position: absolute;
   top: 0;
@@ -145,7 +310,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
   color: #fff;
   font-family: "Roboto-slab", serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   text-decoration: none;
 }
@@ -167,7 +332,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
 
 .header__link {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 56px;
   text-decoration: none;
@@ -183,7 +348,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
   background: transparent;
   color: #fff;
   font-family: Roboto, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   cursor: pointer;
@@ -326,22 +491,28 @@ window.$RefreshSig$ = () => (type) => type;</script>
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 641px) {
   .footer__container {
     flex-direction: column-reverse;
     gap: 38px;
     margin: 20px 16px 22px 16px;
     width: auto;
+    align-items: start;
   }
 
   .footer__links {
-    /* justify-content: space-between; */
-    width: 200px;
+    width: 100%;
+    justify-content: space-between;
     font-size: 18px;
   }
 
   .footer__links-nav {
     flex-direction: column;
+  }
+
+  .footer__links-social {
+    gap: 16px;
+    margin-left: auto;
   }
 }
 </style><style type="text/css" data-vite-dev-id="C:/Users/dougl/OneDrive/Desktop/TripleTen_Program/TripleTen_Projects/news-explorer-frontend/src/vendor/normalize.css">/* Global reset */
@@ -359,7 +530,7 @@ body {
 }
 </style></head>
   <body data-new-gr-c-s-check-loaded="14.1268.0" data-gr-ext-installed="">
-    <div id="root"><header class="header "><div class="header__container"><a class="header__logo" href="http://localhost:5173/" data-discover="true">NewsExplorer</a><button class="header__menu-button" aria-label="Open menu"><img alt="Menu toggle" src="./news-explorer-frontend_files/menu.png"></button><nav class="header__nav header__nav_desktop"><a class="header__link" href="http://localhost:5173/" data-discover="true">Home</a><button class="header__button">Sign in</button></nav></div></header><main><section class="search"><div class="search__container"><h1 class="search__title">What's going on in the world?</h1><p class="search__subtitle">Find the latest news on any topic and save them in your personal account.</p><form class="search__form"><input class="search__input" placeholder="Enter topic" aria-label="Search topic" type="text"><button type="submit" class="search__button">Search</button></form></div></section></main><div class="footer"><div class="footer__container"><p class="footer__copyright">© 2024 Supersite, Powered by News API</p><div class="footer__links"><div class="footer__links-nav"><a class="footer__links" href="http://localhost:5173/" data-discover="true">Home</a><a href="https://tripleten.com/" class="footer__links" target="_blank" rel="noreferrer">TripleTen</a></div><div class="footer__links-social"><a href="https://www.linkedin.com/" class="footer__link footer__link-linkedin" target="_blank" rel="noreferrer"><img alt="LinkedIn" src="./news-explorer-frontend_files/LinkedIn.png"></a><a href="https://github.com/Maupin76" class="footer__link footer__link-github" target="_blank" rel="noreferrer"><img alt="GitHub" src="./news-explorer-frontend_files/github.png"></a></div></div></div></div></div>
+    <div id="root"><header class="header "><div class="header__container"><a class="header__logo" href="http://localhost:5173/" data-discover="true">NewsExplorer</a><button class="header__menu-button" aria-label="Open menu"><img alt="Menu toggle" src="./news-explorer-frontend_files/menu.png"></button><nav class="header__nav header__nav_desktop"><a class="header__link" href="http://localhost:5173/" data-discover="true">Home</a><button class="header__button">Sign in</button></nav></div></header><main><section class="search"><div class="search__container"><h1 class="search__title">What's going on in the world?</h1><p class="search__subtitle">Find the latest news on any topic and save them in your personal account.</p><form class="search__form"><input class="search__input" placeholder="Enter topic" aria-label="Search topic" type="text"><button type="submit" class="search__button">Search</button></form></div></section><main class="main"><section class="main__intro"><h2 class="main__results-title">Search results</h2><section class="news-card-list"><article class="news-card"><button type="button" class="news-card__save-button" aria-label="Save article"></button><img alt="Everyone Needs a Special &#39;Sit Spot&#39; in Nature" class="news-card__image" src="./news-explorer-frontend_files/card-1.png"><div class="news-card__content"><p class="news-card__date">November 4, 2020</p><h3 class="news-card__title">Everyone Needs a Special 'Sit Spot' in Nature</h3><p class="news-card__text">Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find...</p><p class="news-card__source">TREEHUGGER</p></div></article><article class="news-card"><button type="button" class="news-card__save-button" aria-label="Save article"></button><img alt="Nature Makes You Better" class="news-card__image" src="./news-explorer-frontend_files/card-2.png"><div class="news-card__content"><p class="news-card__date">February 19, 2019</p><h3 class="news-card__title">Nature Makes You Better</h3><p class="news-card__text">We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves...</p><p class="news-card__source">NATIONAL GEOGRAPHIC</p></div></article><article class="news-card"><button type="button" class="news-card__save-button" aria-label="Save article"></button><img alt="Grand Teton Renews Historic Crest Trail" class="news-card__image" src="./news-explorer-frontend_files/card-3.png"><div class="news-card__content"><p class="news-card__date">October 19, 2020</p><h3 class="news-card__title">Grand Teton Renews Historic Crest Trail</h3><p class="news-card__text">“The linking together of the Cascade and Death Canyon trails, at their heads, took place on October 1, 1933, and marked the first step in the realization of a plan whereby the hiker will be...</p><p class="news-card__source">THE GUARDIAN</p></div></article></section><button type="button" class="main__show-more">Show more</button></section><section class="about"><div class="about__container"><img alt="Author" class="about__avatar" src="./news-explorer-frontend_files/avatar-portrait.jpg"><div class="about__content"><h2 class="about__title">About the author</h2><p class="about__text">Hi, I’m Douglas Maupin — a software developer with a strong background in business operations, leadership, and problem-solving, currently transitioning fully into software engineering. I specialize in front-end and full-stack web development, with hands-on experience building responsive, user-focused applications using HTML, CSS, JavaScript, React, Vite, and REST APIs. I follow modern best practices such as component-based architecture, BEM methodology, responsive design, and clean Git workflows.</p><p class="about__text">Through TripleTen’s Software Engineering Bootcamp, I’ve developed real-world projects that go beyond tutorials — including dynamic web applications, API-driven interfaces, and full-stack deployments. I’ve strengthened my skills in:<br><br>* React component structure and state management<br>* Connecting front-end applications to external APIs<br>* Writing maintainable, scalable CSS<br>* Debugging layout and responsiveness issues across devices<br>* Using Git, GitHub, and deployment workflows confidently<br><br>In addition to technical skills, I bring over a decade of experience in leadership, operations, and customer-focused problem solving, having owned and operated businesses and managed teams across multiple industries. This allows me to approach development with a strong emphasis on clarity, usability, and real user needs, not just code. I’m passionate about building applications that are clean, intuitive, and practical, whether that’s a content-driven platform, a business website, or a data-driven web app. I’m always looking to improve, learn new technologies, and create solutions that deliver real value.</p></div></div></section></main></main><div class="footer"><div class="footer__container"><p class="footer__copyright">© 2024 Supersite, Powered by News API</p><div class="footer__links"><div class="footer__links-nav"><a class="footer__links" href="http://localhost:5173/" data-discover="true">Home</a><a href="https://tripleten.com/" class="footer__links" target="_blank" rel="noreferrer">TripleTen</a></div><div class="footer__links-social"><a href="https://www.linkedin.com/" class="footer__link footer__link-linkedin" target="_blank" rel="noreferrer"><img alt="LinkedIn" src="./news-explorer-frontend_files/LinkedIn.png"></a><a href="https://github.com/Maupin76" class="footer__link footer__link-github" target="_blank" rel="noreferrer"><img alt="GitHub" src="./news-explorer-frontend_files/github.png"></a></div></div></div></div></div>
     <script type="module" src="./news-explorer-frontend_files/main.jsx"></script>
   
 
