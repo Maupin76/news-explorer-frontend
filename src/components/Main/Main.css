@@ -54,3 +54,9 @@
     line-height: 34px;
   }
 }
+
+@media screen and (max-width: 435px) {
+  .main__show-more {
+    margin-bottom: 24px;
+  }
+}
