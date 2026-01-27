@@ -15,36 +15,69 @@
 import { useState } from "react";
 import SearchForm from "../components/SearchForm/SearchForm";
 import Main from "../components/Main/Main";
-import mockNewsCards from "../utils/MockNewsCard";
+import { getNewsByKeyword } from "../utils/newsApi";
+// import mockNewsCards from "../utils/MockNewsCard"; // TEMP fallback
 
 function Home() {
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
+  const [error, setError] = useState(null);
 
   function handleSearch(keyword) {
+    const trimmedKeyword = keyword.trim();
+
     setHasSearched(true);
     setIsLoading(true);
+    setError(null);
 
-    setTimeout(() => {
-      const trimmedKeyword = keyword.trim().toLowerCase();
+    // ✅ TEMP: empty search shows all (mock) articles
+    // if (trimmedKeyword === "") {
+    //   setCards(mockNewsCards);
+    //   setIsLoading(false);
+    //   return;
+    // }
 
-      const filteredCards =
-        trimmedKeyword === ""
-          ? mockNewsCards
-          : mockNewsCards.filter((card) =>
-              card.title.toLowerCase().includes(trimmedKeyword),
-            );
+    // Block empty search (rubric-compliant)
+    if (!trimmedKeyword) {
+      setHasSearched(false);
+      setCards([]);
+      return;
+    }
 
-      setCards(filteredCards);
-      setIsLoading(false);
-    }, 1000);
+    getNewsByKeyword(trimmedKeyword)
+      .then((data) => {
+        const normalized = (data.articles || []).map((a, index) => ({
+          id: `${a.publishedAt}-${index}`,
+          image: a.urlToImage,
+          date: a.publishedAt,
+          title: a.title,
+          text: a.description,
+          source: a.source?.name,
+        }));
+
+        setCards(normalized);
+      })
+      .catch(() => {
+        setCards([]);
+        setError(
+          "Sorry, something went wrong during the request. Please try again later.",
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
     <>
       <SearchForm onSearch={handleSearch} />
-      <Main hasSearched={hasSearched} isLoading={isLoading} cards={cards} />
+      <Main
+        hasSearched={hasSearched}
+        isLoading={isLoading}
+        cards={cards}
+        error={error}
+      />
     </>
   );
 }

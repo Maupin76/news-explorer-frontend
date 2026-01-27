@@ -23,7 +23,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import NothingFound from "../NothingFound/NothingFound";
 
-function Main({ hasSearched, isLoading, cards }) {
+function Main({ hasSearched, isLoading, cards, error }) {
   return (
     <main className="main">
       {hasSearched && (
@@ -32,9 +32,18 @@ function Main({ hasSearched, isLoading, cards }) {
 
           {isLoading && <Preloader />}
 
-          {!isLoading && cards.length > 0 && <NewsCardList cards={cards} />}
+          {!isLoading && error && (
+            <p className="main__error">
+              Sorry, something went wrong during the request. Please try again
+              later.
+            </p>
+          )}
 
-          {!isLoading && cards.length === 0 && <NothingFound />}
+          {!isLoading && !error && cards.length > 0 && (
+            <NewsCardList cards={cards} />
+          )}
+
+          {!isLoading && !error && cards.length === 0 && <NothingFound />}
         </section>
       )}
 
