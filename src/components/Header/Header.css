@@ -75,6 +75,10 @@
   display: none;
 }
 
+.modal-open .overlay {
+  pointer-events: none;
+}
+
 /* ===== Tablet ===== */
 @media screen and (max-width: 768px) {
   .header__container {

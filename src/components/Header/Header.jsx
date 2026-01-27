@@ -4,7 +4,7 @@ import "./Header.css";
 import menuIcon from "../../assets/images/menu.png";
 import closeIcon from "../../assets/images/close.png";
 
-function Header({ isLoggedIn = false }) {
+function Header({ isLoggedIn = false, onSignIn }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
@@ -54,7 +54,13 @@ function Header({ isLoggedIn = false }) {
                 <button className="header__button">Elise ⏷</button>
               </>
             ) : (
-              <button className="header__button">Sign in</button>
+              <button
+                type="button"
+                className="header__button"
+                onClick={onSignIn}
+              >
+                Sign in
+              </button>
             )}
           </nav>
         </div>
@@ -78,7 +84,16 @@ function Header({ isLoggedIn = false }) {
                 <button className="header__button">Elise ⏷</button>
               </>
             ) : (
-              <button className="header__button">Sign in</button>
+              <button
+                type="button"
+                className="header__button"
+                onClick={() => {
+                  onSignIn();
+                  setIsMenuOpen(false);
+                }}
+              >
+                Sign in
+              </button>
             )}
           </nav>
         )}
