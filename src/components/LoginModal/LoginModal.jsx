@@ -1,9 +1,12 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose, onSwitchToRegister }) {
+function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess }) {
   function handleSubmit(e) {
     e.preventDefault();
+
+    // Simulate successful login
+    onLoginSuccess();
   }
 
   return (

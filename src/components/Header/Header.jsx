@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import menuIcon from "../../assets/images/menu.png";
 import closeIcon from "../../assets/images/close.png";
+import logoutIcon from "../../assets/images/logout.svg";
 
-function Header({ isLoggedIn = false, onSignIn }) {
+function Header({ isLoggedIn = false, currentUser, onSignIn }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
@@ -51,7 +52,14 @@ function Header({ isLoggedIn = false, onSignIn }) {
                 <Link to="/saved-news" className="header__link">
                   Saved articles
                 </Link>
-                <button className="header__button">Elise ⏷</button>
+                <button className="header__button">
+                  <span className="header__username">{currentUser?.name}</span>
+                  <img
+                    src={logoutIcon}
+                    alt="Log out"
+                    className="header__logout-icon"
+                  />
+                </button>
               </>
             ) : (
               <button
@@ -81,7 +89,14 @@ function Header({ isLoggedIn = false, onSignIn }) {
                 >
                   Saved articles
                 </Link>
-                <button className="header__button">Elise ⏷</button>
+                <button className="header__button">
+                  <span className="header__username">{currentUser?.name}</span>
+                  <img
+                    src={logoutIcon}
+                    alt="Log out"
+                    className="header__logout-icon"
+                  />
+                </button>
               </>
             ) : (
               <button

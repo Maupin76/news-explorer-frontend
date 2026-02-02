@@ -85,14 +85,19 @@ import { useState } from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ cards }) {
+function NewsCardList({ cards, variant = "home", isLoggedIn = false }) {
   const [visibleCount, setVisibleCount] = useState(3);
 
   return (
     <>
       <section className="news-card-list">
         {cards.slice(0, visibleCount).map((card) => (
-          <NewsCard key={card.id} card={card} isLoggedIn={false} />
+          <NewsCard
+            key={card.id}
+            card={card}
+            variant={variant}
+            isLoggedIn={isLoggedIn}
+          />
         ))}
       </section>
 

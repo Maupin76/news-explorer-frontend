@@ -11,6 +11,9 @@ function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({ name: "Douglas" });
+
   function openLogin() {
     setIsLoginOpen(true);
     setIsRegisterOpen(false);
@@ -18,6 +21,12 @@ function App() {
 
   function openRegister() {
     setIsRegisterOpen(true);
+    setIsLoginOpen(false);
+  }
+
+  //temporary login state for demo purposes
+  function handleLoginSuccess() {
+    setIsLoggedIn(true);
     setIsLoginOpen(false);
   }
 
@@ -35,7 +44,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header onSignIn={openLogin} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
+        onSignIn={openLogin}
+      />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/saved-news" element={<SavedNews />} />
@@ -46,6 +60,8 @@ function App() {
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
         onSwitchToRegister={openRegister}
+        //temporary login state for demo purposes
+        onLoginSuccess={handleLoginSuccess}
       />
 
       <RegisterModal

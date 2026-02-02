@@ -2,7 +2,7 @@
   /* width: 100%;
   max-width: 1440px; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 400px);
   gap: 16px;
   margin: 0 104px;
 }

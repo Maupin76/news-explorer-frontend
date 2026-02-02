@@ -43,6 +43,9 @@
 }
 
 .header__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 176px;
   height: 48px;
   padding: 0 16px;
@@ -55,6 +58,12 @@
   font-weight: 500;
   line-height: 24px;
   cursor: pointer;
+}
+
+.header__logout-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 /* Mobile toggle button hidden by default */

@@ -1,17 +1,3 @@
-// import SearchForm from "../components/SearchForm/SearchForm";
-// import Main from "../components/Main/Main";
-
-// function Home() {
-//   return (
-//     <main>
-//       <SearchForm />
-//       <Main />
-//     </main>
-//   );
-// }
-
-// export default Home;
-
 import { useState } from "react";
 import SearchForm from "../components/SearchForm/SearchForm";
 import Main from "../components/Main/Main";
@@ -30,13 +16,6 @@ function Home() {
     setHasSearched(true);
     setIsLoading(true);
     setError(null);
-
-    // ✅ TEMP: empty search shows all (mock) articles
-    // if (trimmedKeyword === "") {
-    //   setCards(mockNewsCards);
-    //   setIsLoading(false);
-    //   return;
-    // }
 
     // Block empty search (rubric-compliant)
     if (!trimmedKeyword) {
