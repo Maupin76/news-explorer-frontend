@@ -1,13 +1,28 @@
-import mockSavedArticles from "../utils/MockSavedNews";
+import { useEffect, useState } from "react";
+import { getItems, deleteArticle } from "../utils/api";
 import NewsCardList from "../components/NewsCardList/NewsCardList";
 import "./SavedNews.css";
 
 function SavedNews() {
+  const [savedArticles, setSavedArticles] = useState([]);
   const userName = "Douglas";
-  const savedCount = mockSavedArticles.length;
+
+  useEffect(() => {
+    getItems().then((items) => {
+      setSavedArticles(items);
+    });
+  }, []);
+
+  function handleDeleteArticle(id) {
+    deleteArticle(id).then(() => {
+      getItems().then((items) => {
+        setSavedArticles(items);
+      });
+    });
+  }
 
   const uniqueKeywords = [
-    ...new Set(mockSavedArticles.map((article) => article.keyword)),
+    ...new Set(savedArticles.map((article) => article.keyword)),
   ];
 
   const firstTwoKeywords = uniqueKeywords.slice(0, 2);
@@ -15,12 +30,11 @@ function SavedNews() {
 
   return (
     <main className="SavedNews">
-      {/* HEADER SECTION */}
       <section className="SavedNews__header">
         <p className="SavedNews__label">Saved articles</p>
 
         <h1 className="SavedNews__title">
-          {userName}, you have {savedCount} saved articles
+          {userName}, you have {savedArticles.length} saved articles
         </h1>
 
         <p className="SavedNews__keywords">
@@ -33,7 +47,12 @@ function SavedNews() {
       </section>
 
       <section className="SavedNews__cards">
-        <NewsCardList cards={mockSavedArticles} variant="saved" isLoggedIn />
+        <NewsCardList
+          cards={savedArticles}
+          variant="saved"
+          isLoggedIn
+          onDelete={handleDeleteArticle}
+        />
       </section>
     </main>
   );

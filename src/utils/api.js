@@ -1,4 +1,4 @@
-let savedArticles = [];
+export let savedArticles = [];
 
 export function getItems() {
   return new Promise((resolve) => {

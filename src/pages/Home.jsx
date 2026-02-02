@@ -1,17 +1,33 @@
 import { useState } from "react";
-import SearchForm from "../components/SearchForm/SearchForm";
-import Main from "../components/Main/Main";
 import { getNewsByKeyword } from "../utils/newsApi";
 import { formatDate } from "../utils/formatDate";
+import { saveArticle } from "../utils/api";
+
+import SearchForm from "../components/SearchForm/SearchForm";
+import Main from "../components/Main/Main";
 
 function Home() {
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
+  // const [currentKeyword, setCurrentKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  function handleSaveArticle(card) {
+    const articleToSave = {
+      ...card,
+      keyword: searchKeyword,
+    };
+
+    saveArticle(articleToSave).then((saved) => {
+      console.log("Saved article:", saved);
+    });
+  }
 
   function handleSearch(keyword) {
     const trimmedKeyword = keyword.trim();
+    setSearchKeyword(trimmedKeyword);
 
     setHasSearched(true);
     setIsLoading(true);
@@ -30,7 +46,7 @@ function Home() {
         const normalized = (data.articles || []).map((a, index) => ({
           id: `${a.publishedAt}-${index}`,
           image: a.urlToImage,
-          date: formatDate(a.publishedAt), // ✅ formatted here
+          date: formatDate(a.publishedAt),
           title: a.title,
           text: a.description,
           source: a.source?.name,
@@ -57,6 +73,8 @@ function Home() {
         isLoading={isLoading}
         cards={cards}
         error={error}
+        onSaveArticle={(card) => handleSaveArticle(card, searchKeyword)}
+        // isLoggedIn={isLoggedIn}
       />
     </>
   );

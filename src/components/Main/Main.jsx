@@ -23,7 +23,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import NothingFound from "../NothingFound/NothingFound";
 
-function Main({ hasSearched, isLoading, cards, error }) {
+function Main({ hasSearched, isLoading, cards, error, onSaveArticle }) {
   return (
     <main className="main">
       {hasSearched && (
@@ -34,13 +34,12 @@ function Main({ hasSearched, isLoading, cards, error }) {
 
           {!isLoading && error && (
             <p className="main__error">
-              Sorry, something went wrong during the request. Please try again
-              later.
+              Sorry, something went wrong during the request.
             </p>
           )}
 
           {!isLoading && !error && cards.length > 0 && (
-            <NewsCardList cards={cards} />
+            <NewsCardList cards={cards} onSave={onSaveArticle} />
           )}
 
           {!isLoading && !error && cards.length === 0 && <NothingFound />}

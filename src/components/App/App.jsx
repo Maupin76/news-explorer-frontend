@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { authorize, checkToken } from "../../utils/auth";
+import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
 import Header from "../Header/Header";
 import Home from "../../pages/Home";
@@ -15,6 +16,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "Douglas" });
+  const [savedArticles, setSavedArticles] = useState([]);
 
   function openLogin() {
     setIsLoginOpen(true);
@@ -35,6 +37,18 @@ function App() {
         setIsLoggedIn(true);
         setIsLoginOpen(false);
       });
+    });
+  }
+
+  function handleSaveArticle(article) {
+    saveArticle(article).then((saved) => {
+      setSavedArticles((prev) => [...prev, saved]);
+    });
+  }
+
+  function handleDeleteArticle(id) {
+    deleteArticle(id).then(() => {
+      setSavedArticles((prev) => prev.filter((item) => item._id !== id));
     });
   }
 
@@ -70,8 +84,19 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/saved-news" element={<SavedNews />} />
+        <Route
+          path="/"
+          element={
+            <Home onSaveArticle={handleSaveArticle} isLoggedIn={isLoggedIn} />
+          }
+        />
+
+        <Route
+          path="/saved-news"
+          element={
+            <SavedNews savedArticles={savedArticles} isLoggedIn={isLoggedIn} />
+          }
+        />
       </Routes>
       <Footer />
 
