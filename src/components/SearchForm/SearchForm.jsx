@@ -36,15 +36,16 @@ function SearchForm({ onSearch }) {
           account.
         </p>
 
-        <form className="search__form" onSubmit={handleSubmit} noValidate>
+        <form className="search__form" onSubmit={handleSubmit}>
           <input
             type="text"
             className={`search__input ${error ? "search__input_error" : ""}`}
             placeholder="Enter topic"
-            aria-label="Search topic"
             value={keyword}
             onChange={handleChange}
-            required
+            aria-label="Search topic"
+            aria-invalid={!!error}
+            aria-describedby={error ? "search-error" : undefined}
           />
 
           <button type="submit" className="search__button">
@@ -52,7 +53,11 @@ function SearchForm({ onSearch }) {
           </button>
         </form>
 
-        {error && <span className="search__error">{error}</span>}
+        {error && (
+          <span id="search-error" className="search__error">
+            {error}
+          </span>
+        )}
       </div>
     </section>
   );

@@ -1,13 +1,19 @@
 import "./NewsCard.css";
 
-function NewsCard({ card }) {
+function NewsCard({ card, isLoggedIn = false }) {
   return (
     <article className="news-card">
-      <button
-        type="button"
-        className="news-card__save-button"
-        aria-label="Save article"
-      />
+      <div className="news-card__save-wrapper">
+        <button
+          className="news-card__save-button"
+          type="button"
+          aria-label="Save article"
+        />
+
+        {!isLoggedIn && (
+          <span className="news-card__tooltip">Sign in to save articles</span>
+        )}
+      </div>
 
       <img src={card.image} alt={card.title} className="news-card__image" />
 

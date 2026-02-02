@@ -92,7 +92,7 @@ function NewsCardList({ cards }) {
     <>
       <section className="news-card-list">
         {cards.slice(0, visibleCount).map((card) => (
-          <NewsCard key={card.id} card={card} />
+          <NewsCard key={card.id} card={card} isLoggedIn={false} />
         ))}
       </section>
 
@@ -100,7 +100,7 @@ function NewsCardList({ cards }) {
         <button
           type="button"
           className="main__show-more"
-          onClick={() => setVisibleCount(cards.length)}
+          onClick={() => setVisibleCount((prev) => prev + 3)}
         >
           Show more
         </button>

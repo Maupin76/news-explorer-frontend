@@ -13,7 +13,8 @@ function checkResponse(res) {
   return res.json();
 }
 
-function formatDateForApi(date) {
+function formatDate(date) {
+  // YYYY-MM-DD
   return date.toISOString().split("T")[0];
 }
 
@@ -24,16 +25,14 @@ function getLast7DaysRange() {
   sevenDaysAgo.setDate(today.getDate() - 7);
 
   return {
-    from: formatDateForApi(sevenDaysAgo),
-    to: formatDateForApi(today),
+    from: formatDate(sevenDaysAgo),
+    to: formatDate(today),
   };
 }
 
 export function getNewsByKeyword(keyword) {
   if (!API_KEY) {
-    return Promise.reject(
-      new Error("Missing VITE_NEWS_API_KEY in your .env file"),
-    );
+    return Promise.reject(new Error("Missing VITE_NEWS_API_KEY in .env"));
   }
 
   const { from, to } = getLast7DaysRange();

@@ -48,6 +48,17 @@
   outline: none;
 }
 
+.search__error {
+  display: block;
+  margin-top: 8px;
+  color: #ff0000;
+  font-size: 12px;
+}
+
+.search__input_error {
+  border-color: #ff0000;
+}
+
 .search__button {
   width: 168px;
   height: 100%; /* 🔑 THIS IS THE FIX */

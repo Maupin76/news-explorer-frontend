@@ -16,7 +16,7 @@ import { useState } from "react";
 import SearchForm from "../components/SearchForm/SearchForm";
 import Main from "../components/Main/Main";
 import { getNewsByKeyword } from "../utils/newsApi";
-// import mockNewsCards from "../utils/MockNewsCard"; // TEMP fallback
+import { formatDate } from "../utils/formatDate";
 
 function Home() {
   const [hasSearched, setHasSearched] = useState(false);
@@ -42,6 +42,7 @@ function Home() {
     if (!trimmedKeyword) {
       setHasSearched(false);
       setCards([]);
+      setIsLoading(false);
       return;
     }
 
@@ -50,7 +51,7 @@ function Home() {
         const normalized = (data.articles || []).map((a, index) => ({
           id: `${a.publishedAt}-${index}`,
           image: a.urlToImage,
-          date: a.publishedAt,
+          date: formatDate(a.publishedAt), // ✅ formatted here
           title: a.title,
           text: a.description,
           source: a.source?.name,

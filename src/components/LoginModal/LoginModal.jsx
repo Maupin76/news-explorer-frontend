@@ -1,26 +1,32 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose }) {
+function LoginModal({ isOpen, onClose, onSwitchToRegister }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <ModalWithForm isOpen={isOpen} onClose={onClose} title="Sign in">
-      <label className="modal__label modal__label-email">
+    <ModalWithForm
+      type="login"
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Sign in"
+      submitText="Sign in"
+      switchText="or"
+      switchLinkText="Sign up"
+      onSwitchClick={onSwitchToRegister}
+      onSubmit={handleSubmit}
+    >
+      <label className="modal__label">
         Email
-        <input type="email" className="modal__input" />
+        <input type="email" className="modal__input" required />
       </label>
 
-      <label className="modal__label modal__label-password">
+      <label className="modal__label">
         Password
-        <input type="password" className="modal__input" />
+        <input type="password" className="modal__input" required />
       </label>
-
-      <button type="submit" className="modal__submit modal__submit-login">
-        Sign in
-      </button>
-
-      <p className="modal__switch modal__switch-register">
-        or <span className="modal__link">Sign up</span>
-      </p>
     </ModalWithForm>
   );
 }
