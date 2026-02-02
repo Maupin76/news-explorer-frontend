@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { authorize, checkToken } from "../../utils/auth";
+
 import Header from "../Header/Header";
 import Home from "../../pages/Home";
 import SavedNews from "../../pages/SavedNews";
@@ -24,10 +26,16 @@ function App() {
     setIsLoginOpen(false);
   }
 
-  //temporary login state for demo purposes
-  function handleLoginSuccess() {
-    setIsLoggedIn(true);
-    setIsLoginOpen(false);
+  function handleLogin(email, password) {
+    authorize(email, password).then(({ token }) => {
+      localStorage.setItem("token", token);
+
+      checkToken(token).then(({ data }) => {
+        setCurrentUser(data);
+        setIsLoggedIn(true);
+        setIsLoginOpen(false);
+      });
+    });
   }
 
   useEffect(() => {
@@ -40,6 +48,17 @@ function App() {
 
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      checkToken(token).then(({ data }) => {
+        setCurrentUser(data);
+        setIsLoggedIn(true);
+      });
+    }
   }, []);
 
   return (
@@ -60,8 +79,7 @@ function App() {
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
         onSwitchToRegister={openRegister}
-        //temporary login state for demo purposes
-        onLoginSuccess={handleLoginSuccess}
+        onLogin={handleLogin}
       />
 
       <RegisterModal

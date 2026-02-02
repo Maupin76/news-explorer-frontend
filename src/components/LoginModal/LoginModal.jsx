@@ -1,12 +1,14 @@
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess }) {
+function LoginModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
-
-    // Simulate successful login
-    onLoginSuccess();
+    onLogin(email, password);
   }
 
   return (
@@ -23,12 +25,24 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess }) {
     >
       <label className="modal__label">
         Email
-        <input type="email" className="modal__input" required />
+        <input
+          type="email"
+          className="modal__input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
       </label>
 
       <label className="modal__label">
         Password
-        <input type="password" className="modal__input" required />
+        <input
+          type="password"
+          className="modal__input"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
       </label>
     </ModalWithForm>
   );
