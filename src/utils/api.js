@@ -7,7 +7,16 @@ export function getItems() {
 }
 
 export function saveArticle(article) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    const exists = savedArticles.some(
+      (item) => item.title === article.title && item.date === article.date,
+    );
+
+    if (exists) {
+      reject(new Error("Article already saved"));
+      return;
+    }
+
     const saved = {
       ...article,
       _id: crypto.randomUUID(),
