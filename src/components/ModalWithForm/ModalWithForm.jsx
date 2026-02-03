@@ -33,9 +33,11 @@ function ModalWithForm({
           <div className="modal__fields">{children}</div>
 
           <div className="modal__actions">
-            <button type="submit" className="modal__submit">
-              {submitText}
-            </button>
+            {onSubmit && (
+              <button type="submit" className="modal__submit">
+                {submitText}
+              </button>
+            )}
 
             {switchText && (
               <p className="modal__switch">

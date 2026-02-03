@@ -15,7 +15,9 @@ function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ name: "Douglas" });
+  // const [currentUser, setCurrentUser] = useState({ name: "Douglas" });
+  const [currentUser, setCurrentUser] = useState(null);
+
   const [savedArticles, setSavedArticles] = useState([]);
 
   function openLogin() {
@@ -38,6 +40,14 @@ function App() {
         setIsLoginOpen(false);
       });
     });
+  }
+
+  function handleLogout() {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    // temp logout for testing
+    localStorage.removeItem("token");
+    window.location.reload();
   }
 
   function handleSaveArticle(article) {
@@ -81,6 +91,7 @@ function App() {
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
         onSignIn={openLogin}
+        onLogout={handleLogout}
       />
 
       <Routes>

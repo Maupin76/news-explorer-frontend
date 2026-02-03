@@ -120,3 +120,40 @@
   background: none;
   border: none;
 }
+
+.modal__signin-link {
+  background: none;
+  padding: 0;
+  border: none;
+  color: #2f71e5;
+  font-size: 18px;
+  text-align: left;
+}
+
+.modal__success-title {
+  display: block; /* critical */
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
+  margin-bottom: 14px; /* exact Figma spec */
+}
+
+.modal_success .modal__form {
+  min-height: auto;
+}
+
+.modal_success .modal__actions {
+  display: none;
+}
+
+.modal_success .modal__fields {
+  margin: 0;
+  padding: 0;
+}
+
+.modal_success .modal__container {
+  padding: 43px 79px 51px 36px;
+}
