@@ -42,7 +42,7 @@
 }
 
 .SavedNews__cards {
-  margin: 62px auto;
+  margin: 62px;
 }
 
 .SavedNews__card_alt-hoverable:hover {
@@ -69,4 +69,10 @@
   font-weight: 700;
   color: #b6bcbf;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1000px) {
+  .SavedNews__image {
+    height: 150px;
+  }
 }

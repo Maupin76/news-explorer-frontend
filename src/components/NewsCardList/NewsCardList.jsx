@@ -13,7 +13,11 @@ function NewsCardList({
 
   return (
     <>
-      <section className="news-card-list">
+      <section
+        className={`news-card-list ${
+          variant === "saved" ? "news-card-list_saved" : ""
+        }`}
+      >
         {cards.slice(0, visibleCount).map((card) => (
           <NewsCard
             key={card.id || card._id}

@@ -6,9 +6,9 @@
 }
 
 .main__results {
-  max-width: 1232px;
-  margin: 0 auto;
-  /* padding: 80px 104px; */
+  width: 100%;
+  padding: 0 104px;
+  box-sizing: border-box;
 }
 
 .main__results-title {
@@ -18,7 +18,7 @@
   line-height: 46px;
   margin-bottom: 64px;
   margin-top: 80px;
-  margin-left: 104px;
+  /* margin-left: 104px; */
 }
 
 .main__cards-placeholder {
@@ -43,12 +43,6 @@
 
 @media screen and (max-width: 768px) {
   .main__results-title {
-    margin-left: 40px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .main__results-title {
     margin: 32px 16px 58px;
     font-size: 30px;
     line-height: 34px;
@@ -57,6 +51,11 @@
 
 @media screen and (max-width: 435px) {
   .main__show-more {
-    margin-bottom: 24px;
+    margin: 16px auto 24px;
+    height: 56px;
+  }
+
+  .main__results {
+    padding: 0 16px;
   }
 }
