@@ -1,17 +1,34 @@
 import "./NewsCard.css";
 
-function NewsCard({ card, onSave, onDelete, isLoggedIn, variant = "home" }) {
+function NewsCard({
+  card,
+  savedArticles = [],
+  onSave,
+  onDelete,
+  isLoggedIn,
+  variant = "home",
+}) {
+  const isSaved = savedArticles?.some((saved) => saved.title === card.title);
+
   return (
     <article className="news-card">
       {/* HOME MODE */}
       {variant === "home" && (
         <div className="news-card__save-wrapper">
           <button
-            className="news-card__save-button"
+            className={`news-card__save-button ${
+              isSaved ? "news-card__save-button_saved" : ""
+            }`}
             type="button"
-            aria-label="Save article"
-            onClick={() => onSave(card)}
+            aria-label={isSaved ? "Article saved" : "Save article"}
+            disabled={isSaved}
+            onClick={() => {
+              if (!isSaved) {
+                onSave(card);
+              }
+            }}
           />
+
           {!isLoggedIn && (
             <span className="news-card__hint">Sign in to save articles</span>
           )}

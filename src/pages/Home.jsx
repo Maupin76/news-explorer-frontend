@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { getNewsByKeyword } from "../utils/newsApi";
 import { formatDate } from "../utils/formatDate";
-import { saveArticle } from "../utils/api";
 
 import SearchForm from "../components/SearchForm/SearchForm";
 import Main from "../components/Main/Main";
 
-function Home() {
+function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
-  // const [currentKeyword, setCurrentKeyword] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
 
   function handleSaveArticle(card) {
@@ -20,9 +18,7 @@ function Home() {
       keyword: searchKeyword,
     };
 
-    saveArticle(articleToSave).then((saved) => {
-      console.log("Saved article:", saved);
-    });
+    onSaveArticle(articleToSave);
   }
 
   function handleSearch(keyword) {
@@ -73,8 +69,9 @@ function Home() {
         isLoading={isLoading}
         cards={cards}
         error={error}
-        onSaveArticle={(card) => handleSaveArticle(card, searchKeyword)}
-        // isLoggedIn={isLoggedIn}
+        savedArticles={savedArticles}
+        onSaveArticle={handleSaveArticle}
+        isLoggedIn={isLoggedIn}
       />
     </>
   );

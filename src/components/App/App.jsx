@@ -43,17 +43,49 @@ function App() {
   }
 
   function handleLogout() {
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setCurrentUser(null);
-    // temp logout for testing
-    localStorage.removeItem("token");
-    window.location.reload();
+    setSavedArticles([]);
   }
 
+  // function handleSaveArticle(article) {
+  //   const isAlreadySaved = savedArticles.some(
+  //     (saved) => saved.title === article.title,
+  //   );
+
+  //   if (isAlreadySaved) {
+  //     return; //block duplicate save
+  //   }
+
+  //   saveArticle(article).then((saved) => {
+  //     setSavedArticles((prev) => [...prev, saved]);
+  //   });
+  // }
+
   function handleSaveArticle(article) {
-    saveArticle(article).then((saved) => {
-      setSavedArticles((prev) => [...prev, saved]);
-    });
+    const isAlreadySaved = savedArticles.some(
+      (saved) => saved.title === article.title,
+    );
+
+    if (isAlreadySaved) return;
+
+    // 🔑 OPTIMISTIC UPDATE (this is the fix)
+    setSavedArticles((prev) => [...prev, article]);
+
+    saveArticle(article)
+      .then((saved) => {
+        // Replace optimistic item with real saved item (_id)
+        setSavedArticles((prev) =>
+          prev.map((item) => (item.title === article.title ? saved : item)),
+        );
+      })
+      .catch(() => {
+        // Roll back if save fails
+        setSavedArticles((prev) =>
+          prev.filter((item) => item.title !== article.title),
+        );
+      });
   }
 
   function handleDeleteArticle(id) {
@@ -77,13 +109,31 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      checkToken(token).then(({ data }) => {
+    if (!token) return;
+
+    checkToken(token)
+      .then(({ data }) => {
         setCurrentUser(data);
         setIsLoggedIn(true);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        setCurrentUser(null);
       });
-    }
   }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    getItems()
+      .then((items) => {
+        setSavedArticles(items);
+      })
+      .catch(() => {
+        setSavedArticles([]);
+      });
+  }, [isLoggedIn]);
 
   return (
     <BrowserRouter>
@@ -98,14 +148,22 @@ function App() {
         <Route
           path="/"
           element={
-            <Home onSaveArticle={handleSaveArticle} isLoggedIn={isLoggedIn} />
+            <Home
+              onSaveArticle={handleSaveArticle}
+              isLoggedIn={isLoggedIn}
+              savedArticles={savedArticles}
+            />
           }
         />
 
         <Route
           path="/saved-news"
           element={
-            <SavedNews savedArticles={savedArticles} isLoggedIn={isLoggedIn} />
+            <SavedNews
+              savedArticles={savedArticles}
+              isLoggedIn={isLoggedIn}
+              onDelete={handleDeleteArticle}
+            />
           }
         />
       </Routes>

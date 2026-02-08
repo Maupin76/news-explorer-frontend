@@ -4,6 +4,7 @@ import NewsCard from "../NewsCard/NewsCard";
 
 function NewsCardList({
   cards,
+  savedArticles = [],
   onSave,
   onDelete,
   isLoggedIn,
@@ -22,6 +23,7 @@ function NewsCardList({
           <NewsCard
             key={card.id || card._id}
             card={card}
+            savedArticles={savedArticles}
             onSave={onSave}
             onDelete={onDelete}
             isLoggedIn={isLoggedIn}

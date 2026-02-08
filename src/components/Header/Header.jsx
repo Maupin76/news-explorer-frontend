@@ -93,7 +93,14 @@ function Header({ isLoggedIn = false, currentUser, onSignIn, onLogout }) {
                 >
                   Saved articles
                 </Link>
-                <button className="header__button">
+                <button
+                  className="header__button"
+                  type="button"
+                  onClick={() => {
+                    onLogout();
+                    setIsMenuOpen(false);
+                  }}
+                >
                   <span className="header__username">{currentUser?.name}</span>
                   <img
                     src={logoutIcon}
