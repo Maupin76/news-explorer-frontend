@@ -32,13 +32,17 @@
   cursor: pointer;
 }
 
+.news-card__save-button:hover {
+  background-image: url("../../assets/images/saved-hover.png");
+  cursor: default;
+}
+
 .news-card__save-button_saved {
   background-image: url("../../assets/images/saved-marked.png");
 }
 
-.news-card__save-button:hover {
-  background-image: url("../../assets/images/saved-hover.png");
-  cursor: default;
+.news-card__save-button_saved:hover {
+  background-image: url("../../assets/images/saved-marked.png");
 }
 
 .news-card__hint {

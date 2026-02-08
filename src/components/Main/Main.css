@@ -1,6 +1,5 @@
 .main {
   width: 100%;
-  /* background-color: #f5f6f7; */
   margin: 0;
   padding: 0;
 }
@@ -18,11 +17,6 @@
   line-height: 46px;
   margin-bottom: 64px;
   margin-top: 80px;
-  /* margin-left: 104px; */
-}
-
-.main__cards-placeholder {
-  min-height: 200px; /* temporary visual space */
 }
 
 .main__show-more {

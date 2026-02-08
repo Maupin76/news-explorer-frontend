@@ -4,22 +4,7 @@ import NewsCardList from "../components/NewsCardList/NewsCardList";
 import "./SavedNews.css";
 
 function SavedNews({ savedArticles, onDelete }) {
-  // const [savedArticles, setSavedArticles] = useState([]);
   const userName = "Douglas";
-
-  // useEffect(() => {
-  //   getItems().then((items) => {
-  //     setSavedArticles(items);
-  //   });
-  // }, []);
-
-  // function handleDeleteArticle(id) {
-  //   deleteArticle(id).then(() => {
-  //     getItems().then((items) => {
-  //       setSavedArticles(items);
-  //     });
-  //   });
-  // }
 
   const uniqueKeywords = [
     ...new Set(savedArticles.map((article) => article.keyword)),

@@ -67,7 +67,6 @@
   display: block;
 }
 
-/* Mobile toggle button hidden by default */
 .header__menu-button {
   display: none;
   background: none;
@@ -81,25 +80,18 @@
   cursor: pointer;
 }
 
-.overlay {
+.header__overlay {
   display: none;
 }
 
-.modal-open .overlay {
-  pointer-events: none;
-}
-
-/* ===== Tablet ===== */
 @media screen and (max-width: 768px) {
   .header__container {
     padding: 0 40px;
   }
 }
 
-/* ===== Mobile ===== */
 @media screen and (max-width: 525px) {
-  /* Hide desktop nav (mobile uses hamburger) */
-  .overlay {
+  .header__overlay {
     display: block;
     position: fixed;
     inset: 0;
@@ -116,7 +108,6 @@
     display: block;
   }
 
-  /* Closed state: short header over hero */
   .header {
     height: 56px;
     border-bottom: none;
@@ -126,7 +117,6 @@
     padding: 16px;
   }
 
-  /* Open state: header becomes the dark panel */
   .header.header_open {
     background: #1a1b22;
     height: auto;

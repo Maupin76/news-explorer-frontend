@@ -12,7 +12,6 @@ function Header({ isLoggedIn = false, currentUser, onSignIn, onLogout }) {
     setIsMenuOpen((prev) => !prev);
   }
 
-  // 🔑 AUTO-CLOSE MENU WHEN LEAVING MOBILE
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth > 425 && isMenuOpen) {
@@ -125,8 +124,7 @@ function Header({ isLoggedIn = false, currentUser, onSignIn, onLogout }) {
         )}
       </header>
 
-      {/* Overlay ONLY exists when mobile menu is open */}
-      {isMenuOpen && <div className="overlay" onClick={toggleMenu} />}
+      {isMenuOpen && <div className="header__overlay" onClick={toggleMenu} />}
     </>
   );
 }

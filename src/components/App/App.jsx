@@ -15,7 +15,6 @@ function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [currentUser, setCurrentUser] = useState({ name: "Douglas" });
   const [currentUser, setCurrentUser] = useState(null);
 
   const [savedArticles, setSavedArticles] = useState([]);
@@ -49,39 +48,25 @@ function App() {
     setSavedArticles([]);
   }
 
-  // function handleSaveArticle(article) {
-  //   const isAlreadySaved = savedArticles.some(
-  //     (saved) => saved.title === article.title,
-  //   );
-
-  //   if (isAlreadySaved) {
-  //     return; //block duplicate save
-  //   }
-
-  //   saveArticle(article).then((saved) => {
-  //     setSavedArticles((prev) => [...prev, saved]);
-  //   });
-  // }
-
   function handleSaveArticle(article) {
+    if (!isLoggedIn) return; // ⛔ hard stop when logged out
+
     const isAlreadySaved = savedArticles.some(
       (saved) => saved.title === article.title,
     );
 
     if (isAlreadySaved) return;
 
-    // 🔑 OPTIMISTIC UPDATE (this is the fix)
+    // optimistic update
     setSavedArticles((prev) => [...prev, article]);
 
     saveArticle(article)
       .then((saved) => {
-        // Replace optimistic item with real saved item (_id)
         setSavedArticles((prev) =>
           prev.map((item) => (item.title === article.title ? saved : item)),
         );
       })
       .catch(() => {
-        // Roll back if save fails
         setSavedArticles((prev) =>
           prev.filter((item) => item.title !== article.title),
         );

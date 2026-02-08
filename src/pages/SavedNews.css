@@ -45,6 +45,18 @@
   margin: 62px;
 }
 
+.SavedNews__keywords {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.SavedNews__keywords-bold {
+  font-weight: 700;
+}
+
 .SavedNews__card_alt-hoverable:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }

@@ -12,12 +12,12 @@ function Footer() {
         </p>
         <div className="footer__links">
           <div className="footer__links-nav">
-            <Link to="/" className="footer__links">
+            <Link to="/" className="footer__link">
               Home
             </Link>
             <a
               href="https://tripleten.com/"
-              className="footer__links"
+              className="footer__link"
               target="_blank"
               rel="noreferrer"
             >

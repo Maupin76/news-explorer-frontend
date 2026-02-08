@@ -21,12 +21,8 @@ function NewsCard({
             }`}
             type="button"
             aria-label={isSaved ? "Article saved" : "Save article"}
-            disabled={isSaved}
-            onClick={() => {
-              if (!isSaved) {
-                onSave(card);
-              }
-            }}
+            disabled={!isLoggedIn || isSaved}
+            onClick={() => onSave(card)}
           />
 
           {!isLoggedIn && (
