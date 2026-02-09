@@ -26,23 +26,23 @@
   border: none;
   border-radius: 8px;
   background-color: #fff;
-  background-image: url("../../assets/images/saved-normal.png");
+  background-image: url("../../assets/images/saved-normal.svg");
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
 }
 
 .news-card__save-button:hover {
-  background-image: url("../../assets/images/saved-hover.png");
+  background-image: url("../../assets/images/saved-hover.svg");
   cursor: default;
 }
 
 .news-card__save-button_saved {
-  background-image: url("../../assets/images/saved-marked.png");
+  background-image: url("../../assets/images/saved-marked.svg");
 }
 
 .news-card__save-button_saved:hover {
-  background-image: url("../../assets/images/saved-marked.png");
+  background-image: url("../../assets/images/saved-marked.svg");
 }
 
 .news-card__hint {

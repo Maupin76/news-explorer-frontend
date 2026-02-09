@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import menuIcon from "../../assets/images/menu.png";
-import closeIcon from "../../assets/images/close.png";
+import menuIcon from "../../assets/images/menu.svg";
+import closeIcon from "../../assets/images/close.svg";
 import logoutIcon from "../../assets/images/logout-white.svg";
 
 function Header({ isLoggedIn = false, currentUser, onSignIn, onLogout }) {

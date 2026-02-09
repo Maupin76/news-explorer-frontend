@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { authorize, checkToken } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
@@ -16,8 +16,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [savedArticles, setSavedArticles] = useState([]);
-
-  const navigate = useNavigate();
 
   function openLogin() {
     setIsLoginOpen(true);
@@ -46,12 +44,10 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser(null);
     setSavedArticles([]);
-
-    navigate("/");
   }
 
   function handleSaveArticle(article) {
-    if (!isLoggedIn) return; // ⛔ hard stop when logged out
+    if (!isLoggedIn) return;
 
     const isAlreadySaved = savedArticles.some(
       (saved) => saved.title === article.title,
@@ -59,7 +55,6 @@ function App() {
 
     if (isAlreadySaved) return;
 
-    // optimistic update
     setSavedArticles((prev) => [...prev, article]);
 
     saveArticle(article)
