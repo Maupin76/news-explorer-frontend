@@ -61,13 +61,13 @@
 
 .search__button {
   width: 168px;
-  height: 100%; /* 🔑 THIS IS THE FIX */
+  height: 100%;
   border: none;
   background: #2f71e5;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 100px; /* keeps pill shape */
+  border-radius: 100px;
 }
 
 @media screen and (max-width: 768px) {
@@ -84,7 +84,6 @@
     max-width: 100%;
   }
   .search__container {
-    /* max-width: 100%; */
     padding: 0 16px;
     text-align: left;
   }
@@ -117,7 +116,6 @@
     height: 56px;
     border: 1px solid #d1d2d6;
     border-radius: 100px;
-    /* padding: 14px 16px; */
     font-size: 16px;
   }
 

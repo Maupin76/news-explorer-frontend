@@ -29,7 +29,6 @@ function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
     setIsLoading(true);
     setError(null);
 
-    // Block empty search (rubric-compliant)
     if (!trimmedKeyword) {
       setHasSearched(false);
       setCards([]);

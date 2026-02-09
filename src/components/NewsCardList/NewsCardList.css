@@ -6,17 +6,17 @@
   justify-content: space-between;
 }
 
-.news-card-list_saved {
-  /* justify-content: center;
-  grid-template-columns: repeat(3, 400px);
-  width: auto; */
-}
-
 @media (min-width: 1500px) {
   .news-card-list {
-    max-width: calc(400px * 3 + 16px * 2); /* 3 cards + gaps */
+    max-width: calc(400px * 3 + 16px * 2);
     margin: 0 auto;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1356px) {
+  .news-card-list {
+    justify-content: center;
   }
 }
 

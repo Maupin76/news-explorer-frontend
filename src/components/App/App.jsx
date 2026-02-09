@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { authorize, checkToken } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
@@ -13,11 +13,11 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-
   const [savedArticles, setSavedArticles] = useState([]);
+
+  const navigate = useNavigate();
 
   function openLogin() {
     setIsLoginOpen(true);
@@ -46,6 +46,8 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser(null);
     setSavedArticles([]);
+
+    navigate("/");
   }
 
   function handleSaveArticle(article) {

@@ -65,12 +65,6 @@
   margin-bottom: 39px;
 }
 
-.modal__field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .modal__label {
   display: flex;
   flex-direction: column;
@@ -131,30 +125,30 @@
 }
 
 .modal__success-title {
-  display: block; /* critical */
+  display: block;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0;
   color: #000;
-  margin-bottom: 14px; /* exact Figma spec */
+  margin-bottom: 14px;
 }
 
-.modal_success .modal__form {
+.modal_modal_success .modal__form {
   min-height: auto;
 }
 
-.modal_success .modal__actions {
+.modal_modal_success .modal__actions {
   display: none;
 }
 
-.modal_success .modal__fields {
+.modal_modal_success .modal__fields {
   margin: 0;
   padding: 0;
 }
 
-.modal_success .modal__container {
+.modal_modal_success .modal__container {
   padding: 43px 79px 51px 36px;
 }
 

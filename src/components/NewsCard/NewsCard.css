@@ -72,11 +72,6 @@
 
 /* ================= SAVED MODE ================= */
 
-.news-card_alt-saved .news-card__save-wrapper {
-  display: none;
-}
-
-/* Keyword pill (left) */
 .news-card__keyword {
   position: absolute;
   top: 24px;
@@ -89,7 +84,6 @@
   font-weight: 500;
 }
 
-/* Delete group (right, SIMPLE fake tooltip) */
 .news-card__delete-group {
   position: absolute;
   top: 24px;
@@ -169,8 +163,7 @@
   line-height: 22px;
   margin: 0;
   flex-grow: 0;
-
-  display: -webkit-box; /* required for now */
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
@@ -178,24 +171,15 @@
 
 .news-card__source {
   margin-top: auto;
-  /* padding-bottom: 24px; */
-
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   line-height: 20px;
   font-weight: 700;
   color: #b6bcbf;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@media screen and (max-width: 1499px) {
-  .news-card-list {
-    justify-content: center;
-  }
 }
 
 @media screen and (max-width: 1000px) {
