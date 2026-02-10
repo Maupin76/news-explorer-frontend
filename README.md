@@ -89,6 +89,10 @@ src/
 npm install
 npm run dev
 
+## 📦 Project Pitch Video
+
+https://youtu.be/8fxR1eEnCds
+
 📌 Notes
 
 This project was built as part of the TripleTen Software Engineering Bootcamp
