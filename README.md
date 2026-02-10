@@ -89,9 +89,10 @@ src/
 npm install
 npm run dev
 
-## 📦 Project Pitch Video
+## Project Pitch Video
 
-https://youtu.be/8fxR1eEnCds
+Check out [this video](https://youtu.be/8fxR1eEnCds), where I describe my
+project and some challenges I faced while building it
 
 📌 Notes
 
