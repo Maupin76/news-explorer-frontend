@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { authorize, checkToken } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
@@ -118,7 +118,7 @@ function App() {
   }, [isLoggedIn]);
 
   return (
-    <BrowserRouter>
+    <>
       <Header
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
@@ -163,7 +163,7 @@ function App() {
         onClose={() => setIsRegisterOpen(false)}
         onSwitchToLogin={openLogin}
       />
-    </BrowserRouter>
+    </>
   );
 }
 
