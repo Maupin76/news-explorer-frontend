@@ -2,7 +2,8 @@ const BASE_URL = import.meta.env.PROD
   ? "https://nomoreparties.co/news/v2/everything"
   : "https://newsapi.org/v2/everything";
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+// const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const API_KEY = "6d80d50b288c4f4ab0b6ecdfdfa771c4";
 
 function checkResponse(res) {
   if (!res.ok) {
@@ -31,9 +32,9 @@ function getLast7DaysRange() {
 }
 
 export function getNewsByKeyword(keyword) {
-  if (!API_KEY) {
-    return Promise.reject(new Error("Missing VITE_NEWS_API_KEY in .env"));
-  }
+  // if (!API_KEY) {
+  //   return Promise.reject(new Error("Missing VITE_NEWS_API_KEY in .env"));
+  // }
 
   const { from, to } = getLast7DaysRange();
 
