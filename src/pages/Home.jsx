@@ -45,6 +45,7 @@ function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
           title: a.title,
           text: a.description,
           source: a.source?.name,
+          url: a.url,
         }));
 
         setCards(normalized);

@@ -56,6 +56,13 @@ function NewsCard({
         <p className="news-card__text">{card.text}</p>
         <p className="news-card__source">{card.source}</p>
       </div>
+      <a
+        href={card.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="news-card__link"
+        aria-label={card.title}
+      />
     </article>
   );
 }

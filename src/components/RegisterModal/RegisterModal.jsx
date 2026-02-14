@@ -49,17 +49,32 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
         <>
           <label className="modal__label">
             Email
-            <input type="email" className="modal__input" required />
+            <input
+              type="email"
+              className="modal__input"
+              placeholder="Enter email"
+              required
+            />
           </label>
 
           <label className="modal__label">
             Password
-            <input type="password" className="modal__input" required />
+            <input
+              type="password"
+              className="modal__input"
+              placeholder="Enter password"
+              required
+            />
           </label>
 
           <label className="modal__label">
             Name
-            <input type="text" className="modal__input" required />
+            <input
+              type="text"
+              className="modal__input"
+              placeholder="Enter your username"
+              required
+            />
           </label>
         </>
       )}

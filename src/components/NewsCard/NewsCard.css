@@ -12,12 +12,20 @@
   flex-direction: column;
 }
 
+.news-card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  text-decoration: none;
+  color: #1a1b22;
+}
 /* ================= HOME SAVE ================= */
 
 .news-card__save-wrapper {
   position: absolute;
   top: 24px;
   right: 24px;
+  z-index: 2;
 }
 
 .news-card__save-button {
@@ -91,6 +99,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  z-index: 2;
 }
 
 .news-card__delete-label {

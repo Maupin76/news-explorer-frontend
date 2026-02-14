@@ -9,6 +9,10 @@
   gap: 56px;
 }
 
+.about__content {
+  width: 600px;
+}
+
 .about__avatar {
   width: 464px;
   height: 464px;
@@ -43,6 +47,7 @@
 
   .about__content {
     margin: 61px 0 0 0;
+    width: 424px;
   }
 
   .about__title {
@@ -60,9 +65,19 @@
     margin: 32px 24px 0;
   }
 
+  .about__content {
+    padding: 0 16px 0;
+    width: 320px;
+  }
+
   .about__avatar {
     width: 272px;
     height: 272px;
     margin: 0;
+  }
+
+  .about__title {
+    font-weight: 400;
+    font-size: 40px;
   }
 }
