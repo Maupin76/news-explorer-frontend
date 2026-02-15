@@ -42,6 +42,24 @@
   position: relative;
 }
 
+/* underline */
+.header__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px; /* 🔥 THIS aligns with header border */
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.header__link:hover::after {
+  transform: scaleX(1);
+}
+
 .header__button {
   display: flex;
   align-items: center;

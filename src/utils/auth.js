@@ -1,4 +1,4 @@
-export const authorize = (email, password) => {
+export const authorize = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ token: "fake-jwt-token" });
@@ -6,7 +6,7 @@ export const authorize = (email, password) => {
   });
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

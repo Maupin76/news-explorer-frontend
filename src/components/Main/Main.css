@@ -27,13 +27,18 @@
   height: 64px;
   border-radius: 80px;
   border: none;
-  background-color: #e8e8e8;
+  background-color: #fff;
   color: #1a1b22;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   cursor: pointer;
+}
+
+.main__show-more:hover {
+  background-color: #e8e8e8;
+  transition: background-color 0.2s ease;
 }
 
 @media screen and (max-width: 768px) {

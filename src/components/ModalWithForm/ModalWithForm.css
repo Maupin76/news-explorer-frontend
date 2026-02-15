@@ -102,6 +102,16 @@
   margin: 0;
 }
 
+.modal__submit:disabled {
+  background: #e6e8eb;
+  color: #b6bcbf;
+  cursor: not-allowed;
+}
+
+.modal__submit:hover:not(:disabled) {
+  background: #347eff;
+}
+
 .modal__switch {
   text-align: center;
   font-size: 14px;

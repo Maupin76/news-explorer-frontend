@@ -5,6 +5,7 @@ import "./LoginModal.css";
 function LoginModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isFormValid = email.trim() !== "" && password.trim() !== "";
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,6 +23,7 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
       switchLinkText="Sign up"
       onSwitchClick={onSwitchToRegister}
       onSubmit={handleSubmit}
+      isFormValid={isFormValid}
     >
       <label className="modal__label">
         Email

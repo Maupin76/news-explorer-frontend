@@ -4,6 +4,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const isFormValid =
+    email.trim() !== "" && password.trim() !== "" && name.trim() !== "";
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,6 +40,7 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
       }
       submitText={isSuccess ? "" : "Sign up"}
       onSubmit={isSuccess ? undefined : handleSubmit}
+      isFormValid={!isSuccess && isFormValid}
     >
       {isSuccess ? (
         <button
@@ -53,6 +61,8 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
               type="email"
               className="modal__input"
               placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </label>
@@ -63,6 +73,8 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
               type="password"
               className="modal__input"
               placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </label>
@@ -73,6 +85,8 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
               type="text"
               className="modal__input"
               placeholder="Enter your username"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </label>

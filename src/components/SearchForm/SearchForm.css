@@ -46,6 +46,16 @@
   padding: 14px 20px;
   font-size: 16px;
   outline: none;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: #1a1b22;
+  caret-color: #2f71e5;
+}
+
+.search__input::placeholder {
+  color: #b6bcbf;
 }
 
 .search__error {
@@ -64,10 +74,27 @@
   height: 100%;
   border: none;
   background: #2f71e5;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
   border-radius: 100px;
+}
+
+/* Hover */
+.search__button:hover {
+  background-color: #347eff;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
+  cursor: pointer;
+}
+
+/* Active (click state) */
+.search__button:active {
+  background-color: #2a65cc;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
 }
 
 @media screen and (max-width: 768px) {

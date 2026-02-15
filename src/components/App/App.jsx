@@ -28,15 +28,19 @@ function App() {
   }
 
   function handleLogin(email, password) {
-    authorize(email, password).then(({ token }) => {
-      localStorage.setItem("token", token);
-
-      checkToken(token).then(({ data }) => {
+    authorize(email, password)
+      .then(({ token }) => {
+        localStorage.setItem("token", token);
+        return checkToken(token);
+      })
+      .then(({ data }) => {
         setCurrentUser(data);
         setIsLoggedIn(true);
         setIsLoginOpen(false);
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
       });
-    });
   }
 
   function handleLogout() {
@@ -71,9 +75,13 @@ function App() {
   }
 
   function handleDeleteArticle(id) {
-    deleteArticle(id).then(() => {
-      setSavedArticles((prev) => prev.filter((item) => item._id !== id));
-    });
+    deleteArticle(id)
+      .then(() => {
+        setSavedArticles((prev) => prev.filter((item) => item._id !== id));
+      })
+      .catch((err) => {
+        console.error("Delete failed:", err);
+      });
   }
 
   useEffect(() => {
