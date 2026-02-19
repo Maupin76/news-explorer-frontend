@@ -1,0 +1,48 @@
+import { useState } from "react";
+import "./NewsCardList.css";
+import NewsCard from "../NewsCard/NewsCard";
+
+function NewsCardList({
+  cards,
+  savedArticles = [],
+  onSave,
+  onDelete,
+  isLoggedIn,
+  variant = "home",
+}) {
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  return (
+    <>
+      <section
+        className={`news-card-list ${
+          variant === "saved" ? "news-card-list_saved" : ""
+        }`}
+      >
+        {cards.slice(0, visibleCount).map((card) => (
+          <NewsCard
+            key={card.id || card._id}
+            card={card}
+            savedArticles={savedArticles}
+            onSave={onSave}
+            onDelete={onDelete}
+            isLoggedIn={isLoggedIn}
+            variant={variant}
+          />
+        ))}
+      </section>
+
+      {visibleCount < cards.length && (
+        <button
+          type="button"
+          className="main__show-more"
+          onClick={() => setVisibleCount((prev) => prev + 3)}
+        >
+          Show more
+        </button>
+      )}
+    </>
+  );
+}
+
+export default NewsCardList;
