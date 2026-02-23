@@ -85,6 +85,13 @@ function App() {
   }
 
   useEffect(() => {
+    fetch("http://localhost:3001/news-test")
+      .then((res) => res.json())
+      .then((data) => console.log("Backend response:", data))
+      .catch((err) => console.error("Error:", err));
+  }, []);
+
+  useEffect(() => {
     function handleEsc(e) {
       if (e.key === "Escape") {
         setIsLoginOpen(false);
