@@ -38,7 +38,7 @@ function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
 
     getNewsByKeyword(trimmedKeyword)
       .then((data) => {
-        const normalized = (data.articles || []).map((a, index) => ({
+        const normalized = (data || []).map((a, index) => ({
           id: `${a.publishedAt}-${index}`,
           image: a.urlToImage,
           date: formatDate(a.publishedAt),
