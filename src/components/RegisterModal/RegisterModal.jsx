@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
+function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegister }) {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -15,7 +15,13 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
     e.preventDefault();
 
     // simulate successful registration
-    setIsSuccess(true);
+    onRegister(email, password, name)
+      .then(() => {
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        console.error("Registration failed:", err);
+      });
   }
 
   function handleClose() {

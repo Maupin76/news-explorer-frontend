@@ -36,20 +36,27 @@
 
 const BASE_URL = "http://localhost:3001";
 
+function getAuthHeaders() {
+  const token = localStorage.getItem("jwt");
+
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+}
+
 // GET saved articles
 export function getItems() {
-  return fetch(`${BASE_URL}/articles`).then((res) =>
-    res.ok ? res.json() : Promise.reject(res.status),
-  );
+  return fetch(`${BASE_URL}/articles`, {
+    headers: getAuthHeaders(),
+  }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
 }
 
 // SAVE article
 export function saveArticle(article) {
   return fetch(`${BASE_URL}/articles`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify(article),
   }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
 }
@@ -58,5 +65,6 @@ export function saveArticle(article) {
 export function deleteArticle(id) {
   return fetch(`${BASE_URL}/articles/${id}`, {
     method: "DELETE",
+    headers: getAuthHeaders(),
   }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
 }

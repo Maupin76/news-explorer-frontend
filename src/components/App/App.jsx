@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { authorize, checkToken } from "../../utils/auth";
+// import { authorize, checkToken } from "../../utils/auth";
+import { signin, signup, getCurrentUser } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
 import Header from "../Header/Header";
@@ -27,15 +28,37 @@ function App() {
     setIsLoginOpen(false);
   }
 
+  // function handleLogin(email, password) {
+  //   authorize(email, password)
+  //     .then(({ token }) => {
+  //       localStorage.setItem("token", token);
+  //       return checkToken(token);
+  //     })
+  //     .then(({ data }) => {
+  //       setCurrentUser(data);
+  //       setIsLoggedIn(true);
+  //       setIsLoginOpen(false);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Login failed:", err);
+  //     });
+  // }
+
+  function handleRegister(email, password, name) {
+    return signup(email, password, name).then(() => {
+      return handleLogin(email, password); // ✅ CORRECT
+    });
+  }
+
   function handleLogin(email, password) {
-    authorize(email, password)
+    signin(email, password)
       .then(({ token }) => {
-        localStorage.setItem("token", token);
-        return checkToken(token);
-      })
-      .then(({ data }) => {
-        setCurrentUser(data);
+        localStorage.setItem("jwt", token);
         setIsLoggedIn(true);
+        return getCurrentUser(token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setIsLoginOpen(false);
       })
       .catch((err) => {
@@ -44,7 +67,7 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
     setSavedArticles([]);
@@ -84,12 +107,12 @@ function App() {
       });
   }
 
-  useEffect(() => {
-    fetch("http://localhost:3001/news-test")
-      .then((res) => res.json())
-      .then((data) => console.log("Backend response:", data))
-      .catch((err) => console.error("Error:", err));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/news-test")
+  //     .then((res) => res.json())
+  //     .then((data) => console.log("Backend response:", data))
+  //     .catch((err) => console.error("Error:", err));
+  // }, []);
 
   useEffect(() => {
     function handleEsc(e) {
@@ -103,18 +126,35 @@ function App() {
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+
+  //   if (!token) return;
+
+  //   checkToken(token)
+  //     .then(({ data }) => {
+  //       setCurrentUser(data);
+  //       setIsLoggedIn(true);
+  //     })
+  //     .catch(() => {
+  //       localStorage.removeItem("token");
+  //       setIsLoggedIn(false);
+  //       setCurrentUser(null);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwt");
 
     if (!token) return;
 
-    checkToken(token)
-      .then(({ data }) => {
-        setCurrentUser(data);
+    getCurrentUser(token)
+      .then((userData) => {
         setIsLoggedIn(true);
+        setCurrentUser(userData);
       })
       .catch(() => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("jwt");
         setIsLoggedIn(false);
         setCurrentUser(null);
       });
@@ -177,6 +217,7 @@ function App() {
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
         onSwitchToLogin={openLogin}
+        onRegister={handleRegister}
       />
     </>
   );
