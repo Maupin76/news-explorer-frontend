@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-// import { authorize, checkToken } from "../../utils/auth";
 import { signin, signup, getCurrentUser } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
@@ -28,32 +27,16 @@ function App() {
     setIsLoginOpen(false);
   }
 
-  // function handleLogin(email, password) {
-  //   authorize(email, password)
-  //     .then(({ token }) => {
-  //       localStorage.setItem("token", token);
-  //       return checkToken(token);
-  //     })
-  //     .then(({ data }) => {
-  //       setCurrentUser(data);
-  //       setIsLoggedIn(true);
-  //       setIsLoginOpen(false);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Login failed:", err);
-  //     });
-  // }
-
   function handleRegister(email, password, name) {
     return signup(email, password, name).then(() => {
-      return handleLogin(email, password); // ✅ CORRECT
+      return handleLogin(email, password);
     });
   }
 
   function handleLogin(email, password) {
     signin(email, password)
       .then(({ token }) => {
-        localStorage.setItem("jwt", token);
+        sessionStorage.setItem("jwt", token);
         setIsLoggedIn(true);
         return getCurrentUser(token);
       })
@@ -67,7 +50,7 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
     setSavedArticles([]);
@@ -107,13 +90,6 @@ function App() {
       });
   }
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/news-test")
-  //     .then((res) => res.json())
-  //     .then((data) => console.log("Backend response:", data))
-  //     .catch((err) => console.error("Error:", err));
-  // }, []);
-
   useEffect(() => {
     function handleEsc(e) {
       if (e.key === "Escape") {
@@ -126,25 +102,8 @@ function App() {
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-
-  //   if (!token) return;
-
-  //   checkToken(token)
-  //     .then(({ data }) => {
-  //       setCurrentUser(data);
-  //       setIsLoggedIn(true);
-  //     })
-  //     .catch(() => {
-  //       localStorage.removeItem("token");
-  //       setIsLoggedIn(false);
-  //       setCurrentUser(null);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
+    const token = sessionStorage.getItem("jwt");
 
     if (!token) return;
 
@@ -154,7 +113,7 @@ function App() {
         setCurrentUser(userData);
       })
       .catch(() => {
-        localStorage.removeItem("jwt");
+        sessionStorage.removeItem("jwt");
         setIsLoggedIn(false);
         setCurrentUser(null);
       });
