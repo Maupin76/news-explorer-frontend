@@ -1,26 +1,4 @@
-// export const authorize = () => {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({ token: "fake-jwt-token" });
-//     }, 500);
-//   });
-// };
-
-// export const checkToken = () => {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({
-//         data: {
-//           name: "Douglas",
-//           email: "douglas@example.com",
-//           _id: "fake-user-id",
-//         },
-//       });
-//     }, 500);
-//   });
-// };
-
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://api.news.douglasmaupin.com";
 
 export const signup = (email, password, name) => {
   return fetch(`${BASE_URL}/signup`, {

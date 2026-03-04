@@ -1,5 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { getItems, deleteArticle } from "../utils/api";
 import NewsCardList from "../components/NewsCardList/NewsCardList";
 import "./SavedNews.css";
 

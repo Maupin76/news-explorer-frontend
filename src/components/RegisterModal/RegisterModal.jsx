@@ -14,13 +14,12 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegister }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // simulate successful registration
     onRegister(email, password, name)
       .then(() => {
         setIsSuccess(true);
       })
       .catch((err) => {
-        console.error("Registration failed:", err);
+        errorLogger.error("Registration failed:", err);
       });
   }
 
@@ -31,7 +30,6 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegister }) {
 
   return (
     <ModalWithForm
-      // -  type="register"
       type={`register${isSuccess ? " modal_success" : ""}`}
       isOpen={isOpen}
       onClose={handleClose}

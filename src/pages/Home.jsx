@@ -12,15 +12,6 @@ function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
   const [error, setError] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  // function handleSaveArticle(card) {
-  //   const articleToSave = {
-  //     ...card,
-  //     keyword: searchKeyword,
-  //   };
-
-  //   onSaveArticle(articleToSave);
-  // }
-
   function handleSaveArticle(card) {
     const articleToSave = {
       keyword: searchKeyword,
@@ -28,7 +19,7 @@ function Home({ isLoggedIn, savedArticles, onSaveArticle }) {
       text: card.text,
       date: card.date,
       source: card.source,
-      link: card.url, // 🔥 THIS is the only critical change
+      link: card.url,
       image: card.image,
     };
 
