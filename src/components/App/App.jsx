@@ -45,7 +45,7 @@ function App() {
         setIsLoginOpen(false);
       })
       .catch((err) => {
-        errorLogger.error("Login failed:", err);
+        console.error("Login failed:", err);
       });
   }
 
@@ -86,7 +86,7 @@ function App() {
         setSavedArticles((prev) => prev.filter((item) => item._id !== id));
       })
       .catch((err) => {
-        errorLogger.error("Delete failed:", err);
+        console.error("Delete failed:", err);
       });
   }
 
