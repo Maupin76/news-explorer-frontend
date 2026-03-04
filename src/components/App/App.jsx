@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { authorize, checkToken } from "../../utils/auth";
+import { signin, signup, getCurrentUser } from "../../utils/auth";
 import { getItems, saveArticle, deleteArticle } from "../../utils/api";
 
 import Header from "../Header/Header";
@@ -27,15 +27,21 @@ function App() {
     setIsLoginOpen(false);
   }
 
+  function handleRegister(email, password, name) {
+    return signup(email, password, name).then(() => {
+      return handleLogin(email, password);
+    });
+  }
+
   function handleLogin(email, password) {
-    authorize(email, password)
+    signin(email, password)
       .then(({ token }) => {
-        localStorage.setItem("token", token);
-        return checkToken(token);
-      })
-      .then(({ data }) => {
-        setCurrentUser(data);
+        sessionStorage.setItem("jwt", token);
         setIsLoggedIn(true);
+        return getCurrentUser(token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setIsLoginOpen(false);
       })
       .catch((err) => {
@@ -44,7 +50,7 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
     setSavedArticles([]);
@@ -97,17 +103,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("jwt");
 
     if (!token) return;
 
-    checkToken(token)
-      .then(({ data }) => {
-        setCurrentUser(data);
+    getCurrentUser(token)
+      .then((userData) => {
         setIsLoggedIn(true);
+        setCurrentUser(userData);
       })
       .catch(() => {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("jwt");
         setIsLoggedIn(false);
         setCurrentUser(null);
       });
@@ -170,6 +176,7 @@ function App() {
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
         onSwitchToLogin={openLogin}
+        onRegister={handleRegister}
       />
     </>
   );
